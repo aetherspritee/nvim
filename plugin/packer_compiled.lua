@@ -229,10 +229,25 @@ _G.packer_plugins = {
     path = "/home/yulivee/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  ["pywal.nvim"] = {
+    loaded = true,
+    path = "/home/yulivee/.local/share/nvim/site/pack/packer/start/pywal.nvim",
+    url = "https://github.com/AlphaTechnolog/pywal.nvim"
+  },
+  ["ranger.vim"] = {
+    loaded = true,
+    path = "/home/yulivee/.local/share/nvim/site/pack/packer/start/ranger.vim",
+    url = "https://github.com/francoiscabrol/ranger.vim"
+  },
   ["registers.nvim"] = {
     loaded = true,
     path = "/home/yulivee/.local/share/nvim/site/pack/packer/start/registers.nvim",
     url = "https://github.com/tversteeg/registers.nvim"
+  },
+  rnvimr = {
+    loaded = true,
+    path = "/home/yulivee/.local/share/nvim/site/pack/packer/start/rnvimr",
+    url = "https://github.com/kevinhwang91/rnvimr"
   },
   ["telescope-file-browser.nvim"] = {
     loaded = true,
