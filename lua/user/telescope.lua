@@ -3,16 +3,18 @@ if not status_ok then
   return
 end
 
-local actions = require "telescope.actions"
 telescope.load_extension "media_files"
+telescope.load_extension "file_browser"
+local actions = require "telescope.actions"
 local icons = require "user.icons"
+
 
 telescope.setup {
   defaults = {
 
     prompt_prefix = icons.ui.Telescope .. " ",
     selection_caret = " ",
-    path_display = { "smart" },
+    path_display = { "truncate" },
     file_ignore_patterns = { ".git/", "node_modules/", "target/", "docs/", ".settings/" },
 
     mappings = {
@@ -98,6 +100,14 @@ telescope.setup {
       filetypes = { "png", "webp", "jpg", "jpeg" },
       find_cmd = "rg", -- find command (defaults to `fd`)
     },
-  },
+    file_browser = {
+      theme = "ivy",
+      -- disables netrw and use telescope-file-browser in its place
+      -- hijack_netrw = true,
+      -- hide_parent_dir = true,
+      show_hidden = true,
+      },
+    },
 }
+
 

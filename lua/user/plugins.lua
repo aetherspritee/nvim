@@ -114,8 +114,14 @@ return packer.startup(function(use)
   use "ravenxrz/DAPInstall.nvim"
 
 -- Transparent background ???
-  use "xiyaowong/nvim-transparent"
+  -- use "xiyaowong/nvim-transparent"
 
+-- Pywal colorscheme
+  use "AlphaTechnolog/pywal.nvim"
+
+-- ranger
+  use "francoiscabrol/ranger.vim"
+  use "kevinhwang91/rnvimr"
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then

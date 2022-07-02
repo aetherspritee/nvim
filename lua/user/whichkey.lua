@@ -107,13 +107,14 @@ local mappings = {
   ["a"] = { "<cmd>Alpha<cr>", "Alpha" },
   --b = { "<cmd>lua require('user.bfs').open()<cr>", "Buffers" },
   [","] = {"<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>", "Buffers" },
-  ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-  ["w"] = { "<cmd>w<CR>", "Write" },
-  ["h"] = { "<cmd>nohlsearch<CR>", "No HL" },
+  ["."] = {"<cmd>RnvimrToggle<cr>", "Ranger"},
+  ["e"] = { "<cmd>NvimTreeToggle<cr>", "Tree" },
+  --["w"] = { "<cmd>w<CR>", "Write" },
+  -- ["h"] = { "<cmd>nohlsearch<CR>", "No HL" },
   ["q"] = { '<cmd>lua require("user.functions").smart_quit()<CR>', "Quit" },
-  ["/"] = { '<cmd>lua require("Comment.api").toggle_current_linewise()<CR>', "Comment" },
+  ["k"] = { '<cmd>lua require("Comment.api").toggle_current_linewise()<CR>', "Comment" },
   -- ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
-  ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
+  --["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
 
   -- :lua require'lir.float'.toggle()
   -- ["f"] = {
@@ -126,14 +127,14 @@ local mappings = {
   ["z"] = { "<cmd>ZenMode<cr>", "Zen" },
   ["gy"] = "Link",
 
-  p = {
-    name = "Packer",
-    c = { "<cmd>PackerCompile<cr>", "Compile" },
-    i = { "<cmd>PackerInstall<cr>", "Install" },
-    s = { "<cmd>PackerSync<cr>", "Sync" },
-    S = { "<cmd>PackerStatus<cr>", "Status" },
-    u = { "<cmd>PackerUpdate<cr>", "Update" },
-  },
+  -- p = {
+  --   name = "Packer",
+  --   c = { "<cmd>PackerCompile<cr>", "Compile" },
+  --   i = { "<cmd>PackerInstall<cr>", "Install" },
+  --   s = { "<cmd>PackerSync<cr>", "Sync" },
+  --   S = { "<cmd>PackerStatus<cr>", "Status" },
+  --   u = { "<cmd>PackerUpdate<cr>", "Update" },
+  -- },
 
   o = {
     name = "Options",
@@ -144,18 +145,20 @@ local mappings = {
     t = { '<cmd>lua require("user.functions").toggle_tabline()<cr>', "Tabline" },
   },
 
-  s = {
-    name = "Split",
-    s = { "<cmd>split<cr>", "HSplit" },
+  w = {
+    name = "Windows & Buffers",
+    n = { "<cmd>split<cr>", "HSplit" },
     v = { "<cmd>vsplit<cr>", "VSplit" },
+    c = { "<cmd>q<CR>", "Close Split" },
+    b = { "<cmd>Bdelete!<cr>", "Close Buffer"}
   },
 
-  r = {
-    name = "Replace",
-    r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
-    w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Replace Word" },
-    f = { "<cmd>lua require('spectre').open_file_search()<cr>", "Replace Buffer" },
-  },
+  -- r = {
+  --   name = "Replace",
+  --   r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
+  --   w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Replace Word" },
+  --   f = { "<cmd>lua require('spectre').open_file_search()<cr>", "Replace Buffer" },
+  -- },
 
   d = {
     name = "Debug",
@@ -196,35 +199,36 @@ local mappings = {
   },
 
   g = {
-    name = "Git",
+    name = "Git & Docker",
     g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
-    j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
-    k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
-    l = { "<cmd>GitBlameToggle<cr>", "Blame" },
-    p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
-    r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
-    R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
-    s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
-    u = {
-      "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
-      "Undo Stage Hunk",
-    },
-    o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
-    b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-    c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
-    d = {
-      "<cmd>Gitsigns diffthis HEAD<cr>",
-      "Diff",
-    },
-    G = {
-      name = "Gist",
-      a = { "<cmd>Gist -b -a<cr>", "Create Anon" },
-      d = { "<cmd>Gist -d<cr>", "Delete" },
-      f = { "<cmd>Gist -f<cr>", "Fork" },
-      g = { "<cmd>Gist -b<cr>", "Create" },
-      l = { "<cmd>Gist -l<cr>", "List" },
-      p = { "<cmd>Gist -b -p<cr>", "Create Private" },
-    },
+    d = {"<cmd>lua _LAZYDOCKER_TOGGLE()<cr>", "Lazydocker"},
+    -- j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
+    -- k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
+    -- l = { "<cmd>GitBlameToggle<cr>", "Blame" },
+    -- p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
+    -- r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
+    -- R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
+    -- s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
+    -- u = {
+    --   "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
+    --   "Undo Stage Hunk",
+    -- },
+    -- o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
+    -- b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+    -- c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
+    -- d = {
+    --   "<cmd>Gitsigns diffthis HEAD<cr>",
+    --   "Diff",
+    -- },
+    -- G = {
+    --   name = "Gist",
+    --   a = { "<cmd>Gist -b -a<cr>", "Create Anon" },
+    --   d = { "<cmd>Gist -d<cr>", "Delete" },
+    --   f = { "<cmd>Gist -f<cr>", "Fork" },
+    --   g = { "<cmd>Gist -b<cr>", "Create" },
+    --   l = { "<cmd>Gist -l<cr>", "List" },
+    --   p = { "<cmd>Gist -b -p<cr>", "Create Private" },
+    -- },
   },
 
   l = {
@@ -270,21 +274,21 @@ local mappings = {
   --   b = { "<cmd>lua require('surround').toggle_brackets()<cr>", "Brackets" },
   -- },
 
-  S = {
+  -- S = {
     -- name = "Session",
     -- s = { "<cmd>SaveSession<cr>", "Save" },
     -- l = { "<cmd>LoadLastSession!<cr>", "Load Last" },
     -- d = { "<cmd>LoadCurrentDirSession!<cr>", "Load Last Dir" },
     -- f = { "<cmd>Telescope sessions save_current=false<cr>", "Find Session" },
-    name = "SnipRun",
-    c = { "<cmd>SnipClose<cr>", "Close" },
-    f = { "<cmd>%SnipRun<cr>", "Run File" },
-    i = { "<cmd>SnipInfo<cr>", "Info" },
-    m = { "<cmd>SnipReplMemoryClean<cr>", "Mem Clean" },
-    r = { "<cmd>SnipReset<cr>", "Reset" },
-    t = { "<cmd>SnipRunToggle<cr>", "Toggle" },
-    x = { "<cmd>SnipTerminate<cr>", "Terminate" },
-  },
+  --   name = "SnipRun",
+  --   c = { "<cmd>SnipClose<cr>", "Close" },
+  --   f = { "<cmd>%SnipRun<cr>", "Run File" },
+  --   i = { "<cmd>SnipInfo<cr>", "Info" },
+  --   m = { "<cmd>SnipReplMemoryClean<cr>", "Mem Clean" },
+  --   r = { "<cmd>SnipReset<cr>", "Reset" },
+  --   t = { "<cmd>SnipRunToggle<cr>", "Toggle" },
+  --   x = { "<cmd>SnipTerminate<cr>", "Terminate" },
+  -- },
 
   t = {
     name = "Terminal",
@@ -301,11 +305,11 @@ local mappings = {
     v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
   },
 
-  T = {
-    name = "Treesitter",
-    h = { "<cmd>TSHighlightCapturesUnderCursor<cr>", "Highlight" },
-    p = { "<cmd>TSPlaygroundToggle<cr>", "Playground" },
-  },
+  -- T = {
+  --   name = "Treesitter",
+  --   h = { "<cmd>TSHighlightCapturesUnderCursor<cr>", "Highlight" },
+  --   p = { "<cmd>TSPlaygroundToggle<cr>", "Playground" },
+  -- },
 }
 
 local vopts = {
@@ -317,7 +321,7 @@ local vopts = {
   nowait = true, -- use `nowait` when creating keymaps
 }
 local vmappings = {
-  ["/"] = { '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>', "Comment" },
+  ["k"] = { '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>', "Comment" },
   s = { "<esc><cmd>'<,'>SnipRun<cr>", "Run range" },
 }
 
